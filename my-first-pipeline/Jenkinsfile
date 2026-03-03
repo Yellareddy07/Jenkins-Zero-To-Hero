@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
+        sh "docker inspect hello-world"
         sh 'node --version'
       }
     }
