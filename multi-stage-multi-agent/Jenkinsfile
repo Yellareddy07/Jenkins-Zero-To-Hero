@@ -19,7 +19,7 @@ pipeline {
     }
     stage('DB') {
       agent {
-        docker { image 'hello' }
+        docker { image 'node:16-alpine' }
       }
       steps {
         sh 'node --version'
