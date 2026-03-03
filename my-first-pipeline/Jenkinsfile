@@ -3,6 +3,16 @@ pipeline {
     docker { image 'node:16-alpine' }
   }
   stages {
+    stage('Create Dockerfile') {
+    steps {
+        writeFile file: 'Dockerfile', text: '''
+        FROM node:16-alpine
+        WORKDIR /app
+        COPY . .
+        CMD ["node", "--version"]
+        '''
+    }
+}
     stage('Test') {
       steps {
         sh 'docker build -t firstimage .'
